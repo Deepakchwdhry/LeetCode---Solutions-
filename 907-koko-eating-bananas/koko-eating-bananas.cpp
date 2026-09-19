@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    long long timerequired(int value,vector<int>piles){
+    long long timerequired(int value,vector<int>&piles){
         long long total = 0;
         for(int i =0;i<piles.size();i++){
             total += (piles[i]+value-1)/value;
