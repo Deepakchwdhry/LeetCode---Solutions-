@@ -2,25 +2,22 @@
 class Solution {
 public:
     string removeOuterParentheses(string s) {
-        string ans = "";
-        int balance = 0;
-
-        for (char ch : s) {
-
-            if (ch == '(') {
-                if (balance > 0) {
-                    ans += ch;
-                }
-                balance++;
+       int count =0;
+       string result = "";
+       for(auto x:s){
+        if(x=='('){
+            if(count!=0){
+                result.push_back(x);
             }
-            else {
-                balance--;
-                if (balance > 0) {
-                    ans += ch;
-                }
+             count++;
+        }
+        else{
+              count--;
+            if(count!=0){
+                result.push_back(x);
             }
         }
-
-        return ans;
+       }
+       return result;
     }
 };
