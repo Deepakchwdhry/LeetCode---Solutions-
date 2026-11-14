@@ -2,6 +2,7 @@
 class Solution {
 public:
     int romanToInt(string s) {
+
         unordered_map<char, int> mp = {
             {'I', 1},
             {'V', 5},
@@ -12,12 +13,14 @@ public:
             {'M', 1000}
         };
 
-        int ans = 0;
+        int ans = mp[s[0]];
 
-        for (int i = 0; i < s.size(); i++) {
-            if (i + 1 < s.size() && mp[s[i]] < mp[s[i + 1]]) {
-                ans -= mp[s[i]];
-            } else {
+        for(int i = 1; i < s.size(); i++) {
+
+            if(mp[s[i]] > mp[s[i-1]]) {
+                ans += mp[s[i]] - 2 * mp[s[i-1]];
+            }
+            else {
                 ans += mp[s[i]];
             }
         }
